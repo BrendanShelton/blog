@@ -1,11 +1,13 @@
 {{#each posts as |post| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
+<section>
+  <div class="post-header">
     <h2>
       <a href="/post/{{post.id}}">{{post.title}}</a>
     </h2>
-    <p>By<span class="">{{post.user.name}}</span> on {{format_date post.date_created}}</p>
-    <p>{{post.content}} </p>
+    <p>By <span class="">{{post.user.name}}</span> on {{format_date post.date_created}}</p>
   </div>
-</div>
+  <p>{{post.content}} </p>
+</section>
 {{/each}}
+<div id="submit-post"></div><textarea id="post-content"></textarea><button>comment</button></div>
+<script src="/js/dashboard.js"></script>

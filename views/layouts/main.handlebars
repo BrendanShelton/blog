@@ -9,8 +9,8 @@
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+  <div>
+    <header>
       <h1>
         <a href="/">Blog</a>
       </h1>
@@ -24,13 +24,10 @@
         {{/if}}
       </nav>
     </header>
-    <main class="container container-fluid mt-5">
+    <main>
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-      
-    </footer>
   </div>
 
   <!-- Render script for logged in users only -->
