@@ -1,13 +1,18 @@
 {{#each posts as |post| }}
 <section>
-  <div class="post-header">
-    <h2>
-      <a href="/post/{{post.id}}">{{post.title}}</a>
-    </h2>
-    <p>By <span class="">{{post.user.name}}</span> on {{format_date post.date_created}}</p>
-  </div>
-  <p>{{post.content}} </p>
+  <h2>
+    <a href="/post/{{post.id}}">{{post.title}}</a>
+  </h2>
+  <p>{{format_date post.date_created}}</p>
+  <div class="content"><p>{{post.content}} </p></div>
+  <button class="delete-post" data-id="{{post.id}}">delete post</button>
 </section>
 {{/each}}
-<div id="submit-post"></div><textarea id="post-content"></textarea><button>comment</button></div>
+<h1>Create a post:</h1>
+<div id="submit-post">
+  <input class="form-input" type="text" id="post-title" />
+  <textarea id="post-content"></textarea>
+  <button id="post-button">post</button>
+</div>
+
 <script src="/js/dashboard.js"></script>
