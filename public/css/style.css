@@ -22,6 +22,10 @@ h1 a{
     color: white;
 }
 
+nav {
+    font-size: 30px;
+}
+
 nav a {
     color: #000000;
     text-decoration: none;
