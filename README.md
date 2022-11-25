@@ -18,6 +18,10 @@ https://intense-brushlands-34800.herokuapp.com/
 
 ![screenshot of application](screenshot.PNG)
 
+## Technologies used
+
+HTML, CSS, Javascript, Node.js, MySQL Server, Express, Handlebars, Sequelize
+
 ## Credits
 
 N/A
