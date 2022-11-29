@@ -14,6 +14,7 @@ To run this on a local host, open a MySQL shell in the "db" folder and enter "so
 
 
 https://github.com/BrendanShelton/blog
+
 https://intense-brushlands-34800.herokuapp.com/
 
 ![screenshot of application](screenshot.PNG)
