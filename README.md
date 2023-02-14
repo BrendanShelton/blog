@@ -6,7 +6,7 @@ This application allows a user to view posts by other users and comment on them 
 
 ## Installation
 
-This application requires node.js and MySQL Server. Clone this repository by opening a terminal in the folder which will hold it and enter "git clone git@github.com:BrendanShelton/blog.git". Install dependencies by opening the main folder of this application containing "server.js" of the application in a terminal and enter "npm install".
+This application requires node.js and MySQL Server. Clone this repository by opening a terminal in the folder which will hold it and enter "git clone https://github.com/BrendanShelton/blog.git". Install dependencies by opening the main folder of this application containing "server.js" of the application in a terminal and enter "npm install".
 
 ## Usage
 
