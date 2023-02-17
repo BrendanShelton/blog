@@ -39,24 +39,6 @@ const newFormHandler = async (event) => {
     }
   };
 
-  const getContent = function (btn) {
-    // for collecting siblings
-    let siblings = []; 
-    // if no parent, return no sibling
-    
-    // first child of the parent node
-    let sibling  = btn.parentNode.firstChild;
-    
-    // collecting siblings
-    while (sibling) {
-        if (sibling.nodeType === 1 && sibling !== e) {
-            siblings.push(sibling);
-        }
-        sibling = sibling.nextSibling;
-    }
-    return siblings[2];
-};
-
   const editButtonHandler = async (event) => {
     const btn = event.target
     if (btn.hasAttribute('data-id')) {
@@ -69,26 +51,29 @@ const newFormHandler = async (event) => {
       
       editDiv = document.createElement('div')
       console.log(parentEl.childNodes)
-      editDiv.innerHTML =`<textarea maxlength="5000" cols="60" rows="20">${oldContent}</textarea>` + '<button>submit</button>"'
+      editDiv.innerHTML =`<textarea id="edit-area" maxlength="5000" cols="60" rows="20">${oldContent}</textarea>` + 
+        `<button id="submitEditBtn" data-id="${id}">submit</button>`
       parentEl.replaceChild(editDiv, parentEl.children[2])
+      parentEl.removeChild(parentEl.children[4])
+      parentEl.removeChild(parentEl.children[3])
 
-
-      //
-      /*editArea = document.createElement('textarea');
-      submitEditBtn = document.createElement('button');
-      editArea.textContent = oldContent
-      submitEditBtn.textContent = 'submit edit'
-      editDiv.appendChild(editArea);
-      editDiv.appendChild(submitEditBtn);*/
-      
+      const submitEditBtn = document.querySelector("#submitEditBtn")
+      submitEditBtn.addEventListener("click", submitEditHandler)
 
     
     }
   };
   
   const submitEditHandler = async (event) => {
+    const contentVal = document.querySelector('#edit-area').value.trim();
+    const btn = event.target
+    const id = btn.getAttribute('data-id');
     const response = await fetch(`/api/posts/${id}`, {
-      method: 'DELETE',
+      method: 'PUT',
+      body: JSON.stringify({ content: contentVal }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
     });
 
     if (response.ok) {

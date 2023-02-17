@@ -37,11 +37,11 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-router.get('/', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const updatedPost = await Post.update({
       content: req.body.content
-    }, {where: {id: req.body.id}});
+    }, {where: {id: req.params.id}});
 
     res.status(200).json(updatedPost);
   } catch (err) {
