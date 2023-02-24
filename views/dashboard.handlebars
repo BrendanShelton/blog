@@ -1,3 +1,9 @@
+<h1>Create a post:</h1>
+<section id="submit-post">
+  <input class="form-input" type="text" id="post-title" value="title" />
+  <textarea id="post-content"></textarea>
+  <button id="post-button">post</button>
+</section>
 {{#each posts as |post| }}
 <section>
   <h2>
@@ -9,11 +15,6 @@
   <button class="edit-post" data-id="{{post.id}}">edit post</button>
 </section>
 {{/each}}
-<h1>Create a post:</h1>
-<div id="submit-post">
-  <input class="form-input" type="text" id="post-title" />
-  <textarea id="post-content"></textarea>
-  <button id="post-button">post</button>
-</div>
+
 
 <script src="/js/dashboard.js"></script>
