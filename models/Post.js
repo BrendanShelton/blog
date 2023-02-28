@@ -22,6 +22,9 @@ Post.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
+    likes: {
+      type: DataTypes.INTEGER
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
