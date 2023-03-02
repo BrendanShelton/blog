@@ -4,9 +4,10 @@
   <a href="/post/{{post.id}}">
     <h2>{{post.title}}</h2>
     <p>By <span class="">{{post.user.username}}</span> on {{format_date post.date_created}}</p>
-      <div class="content">
-        <p>{{post.content}}</p>
-      </div>
+     <div class="content">
+       <p>{{post.content}}</p>
+    </div>
+    <p>Likes:{{post.liked_by.length}}</p>
   </a>
 </section>
 {{/each}}
