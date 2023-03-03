@@ -40,6 +40,7 @@ router.get('/post/:id', async (req, res) => {
         {
           model: Comment,
         },
+        { model: User, through: Like, as: 'liked_by' }
       ],
     });
     //res.status(200).json(postData)
