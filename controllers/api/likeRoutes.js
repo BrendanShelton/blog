@@ -2,6 +2,18 @@ const router = require('express').Router();
 const { Like } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+router.get('/', async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const likeData = await Like.findAll();
+    
+   // const like = likeData.get({ plain: true });
+
+    res.status(200).json(likeData)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 router.post('/', withAuth, async (req, res) => {
     try {
       const newLike = await Like.create({
@@ -37,3 +49,5 @@ router.post('/', withAuth, async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  module.exports = router;

@@ -14,13 +14,19 @@ router.get('/', async (req, res) => {
         { model: User, through: Like, as: 'liked_by' }
       ],
     });
-
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Post, through: Like, as: 'liked_posts' }],
+    });
+    
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
+    const user = userData.get({ plain: true });
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       posts, 
+      user,
       logged_in: req.session.logged_in 
     });
     //res.status(200).json(postData)
