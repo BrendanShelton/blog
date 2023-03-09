@@ -1,5 +1,7 @@
 
 likeBtns = document.getElementsByClassName("like-post");
+welcomeEL = document.getElementById('welcome')
+userId = welcomeEL.getAttribute('data-id')
 
 fetch(`/api/likes`)
 .then(function (response) {
@@ -7,47 +9,55 @@ fetch(`/api/likes`)
 })
 .then(function (data) {
   console.log(data)
-  for (let like of data){
-    if (like.user_id ==) {
-
+  for (const btn of likeBtns) {
+    let postId = btn.getAttribute('data-id')
+    for (const like of data) {
+      if (like.user_id == userId && like.post_id == postId) {
+        btn.setAttribute("class", "liked")
+      }
     }
   }
   
 })
 
-/*const likeButtonHandler = async (event) => {
+const likeButtonHandler = async (event) => {
     
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
-  
-      const response = await fetch(`/api/posts`, {
-        method: 'POST',
-        body: JSON.stringify({ content: contentVal, title: titleVal }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/dashboard');
+      const checkLiked = event.targetgetAttribute('class');
+
+      if (checkLiked == 'liked') {
+        const response = await fetch(`/api/likes/${id}`, {
+          method: 'DELETE',
+        });
+    
+        if (response.ok) {
+          document.location.replace('/');
+        } else {
+          alert('Failed to unlike');
+        }
       } else {
-        alert('Failed to create post');
+        const response = await fetch(`/api/likes`, {
+          method: 'POST',
+          body: JSON.stringify({ post_id: id, user_id: userId }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+    
+        if (response.ok) {
+          document.location.replace('/dashboard');
+        } else {
+          alert('Failed to like post');
+        }
       }
+      
     }  
 
-      const response = await fetch(`/api/posts/${id}`, {
-        method: 'DELETE',
-      });
-  
-      if (response.ok) {
-        document.location.replace('/dashboard');
-      } else {
-        alert('Failed to delete project');
-      }
+      
     }
-  };
+  
 
   for (const btn of likeBtns) {
       btn.addEventListener("click", likeButtonHandler);
     }
-    */

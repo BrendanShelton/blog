@@ -1,4 +1,7 @@
-<!-- Loop over each object in the projects array -->
+{{#if logged_in}}
+<h2 id="welcome" data-id="{{userId}}">Welcome {{user.username}}</h2>
+{{/if}}
+<!-- Loop over each object in the posts array -->
 {{#each posts as |post| }}
 <section>
   <a href="/post/{{post.id}}">
@@ -9,7 +12,6 @@
     </div>
     <p>Likes:{{post.liked_by.length}}</p>
     {{#if logged_in}}
-    
     <button class="like-post" data-id="{{post.id}}">like</button>
     {{/if}}
   </a>
