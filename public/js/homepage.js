@@ -14,6 +14,7 @@ fetch(`/api/likes`)
     for (const like of data) {
       if (like.user_id == userId && like.post_id == postId) {
         btn.setAttribute("class", "liked")
+        console.log(`class added button on post ${like.post_id}`)
       }
     }
   }
@@ -21,22 +22,29 @@ fetch(`/api/likes`)
 })
 
 const likeButtonHandler = async (event) => {
-    
+  event.stopPropagation();
+  console.log("like button clicked")
+  console.log(event.target.hasAttribute('data-id'))
+  console.log(event.target)
     if (event.target.hasAttribute('data-id')) {
+      console.log('has data-id')
       const id = event.target.getAttribute('data-id');
-      const checkLiked = event.targetgetAttribute('class');
-
+      const checkLiked = event.target.getAttribute('class');
+      console.log(id)
       if (checkLiked == 'liked') {
+        console.log('unlike')
         const response = await fetch(`/api/likes/${id}`, {
           method: 'DELETE',
         });
     
         if (response.ok) {
-          document.location.replace('/');
+          //document.location.replace('/');
         } else {
           alert('Failed to unlike');
         }
       } else {
+        console.log('like')
+        console.log(id)
         const response = await fetch(`/api/likes`, {
           method: 'POST',
           body: JSON.stringify({ post_id: id, user_id: userId }),
@@ -46,7 +54,7 @@ const likeButtonHandler = async (event) => {
         });
     
         if (response.ok) {
-          document.location.replace('/dashboard');
+          //document.location.replace('/');
         } else {
           alert('Failed to like post');
         }

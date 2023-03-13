@@ -124,3 +124,7 @@ section div p {
 label {
     color: white;
 }
+
+.liked {
+    background-color: blue;
+}

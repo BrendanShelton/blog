@@ -10,13 +10,15 @@
      <div class="content">
        <p>{{post.content}}</p>
     </div>
-    <p>Likes:{{post.liked_by.length}}</p>
+    
     {{#if logged_in}}
     <button class="like-post" data-id="{{post.id}}">like</button>
     {{/if}}
+   
   </a>
+   <button class="like-post" data-id="{{post.id}}"><i class='fa fa-thumbs-up'></i>{{post.liked_by.length}}</button>
 </section>
 {{/each}}
 
-<script src="/js/homepage.js"></script>
+<script src="./js/homepage.js"></script>
 
