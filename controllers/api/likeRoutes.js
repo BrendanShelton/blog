@@ -19,7 +19,7 @@ router.post('/', withAuth, async (req, res) => {
       const newLike = await Like.create({
         //...req.body,
         user_id: req.session.user_id,
-        post_id: req.body.content,
+        post_id: req.body.post_id,
         
       });
   

@@ -13,7 +13,7 @@ fetch(`/api/likes`)
     let postId = btn.getAttribute('data-id')
     for (const like of data) {
       if (like.user_id == userId && like.post_id == postId) {
-        btn.setAttribute("class", "liked")
+        btn.setAttribute("class", "liked like-post fa fa-thumbs-up")
         console.log(`class added button on post ${like.post_id}`)
       }
     }
@@ -31,14 +31,15 @@ const likeButtonHandler = async (event) => {
       const id = event.target.getAttribute('data-id');
       const checkLiked = event.target.getAttribute('class');
       console.log(id)
-      if (checkLiked == 'liked') {
+      console.log(checkLiked == 'liked like-post fa fa-thumbs-up')
+      if (checkLiked == 'liked like-post fa fa-thumbs-up') {
         console.log('unlike')
         const response = await fetch(`/api/likes/${id}`, {
           method: 'DELETE',
         });
     
         if (response.ok) {
-          //document.location.replace('/');
+          document.location.replace('/');
         } else {
           alert('Failed to unlike');
         }
@@ -54,7 +55,8 @@ const likeButtonHandler = async (event) => {
         });
     
         if (response.ok) {
-          //document.location.replace('/');
+          document.location.replace('/');
+          console.log(id)
         } else {
           alert('Failed to like post');
         }
