@@ -35,6 +35,36 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/trending', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+        { model: User, through: Like, as: 'liked_by' }
+      ],
+    });
+    
+    // Serialize data so the template can read it
+    const posts = postData.map((post) => post.get({ plain: true }));
+    //posts.sort((a,b) => (a.liked_by.length > b.liked_by.length) ? 1 : ((b.liked_by.length > a.liked_by.length) ? -1 : 0))
+    posts.sort((a,b) => b.liked_by.length - a.liked_by.length)
+    console.log(posts[0].liked_by.length, posts[1].liked_by.length)
+    console.log(posts)
+    // Pass serialized data and session flag into template
+    res.render('homepage', { 
+      posts, 
+      userId: req.session.user_id,
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
