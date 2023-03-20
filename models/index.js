@@ -1,6 +1,7 @@
 const User = require('./User');
 const Post = require('./Post');
 const Comment = require('./Comment');
+const Like = require('./Like')
 
 User.hasMany(Post, {
   foreignKey: 'user_id',
@@ -29,4 +30,24 @@ Comment.belongsTo(Post, {
     foreignKey: 'post_id'
 });
 
-module.exports = { User, Post, Comment};
+User.belongsToMany(Post, {
+  // Define the third table needed to store the foreign keys
+  through: {
+    model: Like,
+    unique: false
+  },
+  // Define an alias for when data is retrieved
+  as: 'liked_posts'
+});
+// Tags belongToMany Products (through ProductTag)
+Post.belongsToMany(User, {
+  // Define the third table needed to store the foreign keys
+  through: {
+    model: Like,
+    unique: false
+  },
+  // Define an alias for when data is retrieved
+  as: 'liked_by'
+});
+
+module.exports = { User, Post, Comment, Like};

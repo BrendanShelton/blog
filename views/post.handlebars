@@ -5,6 +5,7 @@
         <div class="content">
         <p>{{post.content}}</p>
         </div>
+        <p>Likes:{{post.liked_by.length}}</p>
         {{#each post.comments as |comment| }}
         <div class="comment"><p>{{comment.content}}</p></div>
         {{/each}}

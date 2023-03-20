@@ -1,13 +1,24 @@
-<!-- Loop over each object in the projects array -->
+{{#if logged_in}}
+<h2 id="welcome" data-id="{{userId}}">Welcome {{user.username}}</h2>
+{{/if}}
+<!-- Loop over each object in the posts array -->
 {{#each posts as |post| }}
 <section>
   <a href="/post/{{post.id}}">
     <h2>{{post.title}}</h2>
     <p>By <span class="">{{post.user.username}}</span> on {{format_date post.date_created}}</p>
-      <div class="content">
-        <p>{{post.content}}</p>
-      </div>
+     <div class="content">
+       <p>{{post.content}}</p>
+    </div>
+    
+    {{#if logged_in}}
+    <button class="like-post" data-id="{{post.id}}">like</button>
+    {{/if}}
+   
   </a>
+   <button class="like-post fa fa-thumbs-up" data-id="{{post.id}}">{{post.liked_by.length}}</button>
 </section>
 {{/each}}
+
+<script src="./js/homepage.js"></script>
 
