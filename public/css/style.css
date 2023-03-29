@@ -8,8 +8,9 @@ header {
     padding-top: 2%;
     padding-bottom: 3%;
     border-bottom: 2px black solid;
-    background-color: rgb(157, 157, 176);
+    background-color: rgb(50, 50, 138);
     margin-top: 0;
+    height: 2%;
 }
 
 h1 {
@@ -58,7 +59,7 @@ section {
     padding: .5%;
     border: 3px black solid;
     width: 70%;
-    background-color: rgb(119, 111, 111);
+    background-color: rgb(40, 10, 10);
 }
 
 section a {
@@ -66,6 +67,8 @@ section a {
 }
 section h2 {
     color: white;
+    margin-bottom: 1px;
+    margin-top: 1px;
 }
 
 section h2 a {
@@ -75,6 +78,7 @@ section h2 a {
 section p {
     text-decoration: none;
     color: white;
+    margin-top: 1px;
 }
 section div p {
     text-decoration: none;
@@ -126,5 +130,10 @@ label {
 }
 
 .liked {
-    background-color: blue;
+    background-color: rgb(108, 108, 241);
+}
+
+button {
+    border-radius: 6px;
+    margin-top: 2px;
 }
