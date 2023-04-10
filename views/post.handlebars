@@ -6,8 +6,8 @@
         <p>{{post.content}}</p>
         </div>
         <p>Likes:{{post.liked_by.length}}</p>
-        {{#each post.comments as |comment| }}
-        <div class="comment"><p>{{comment.content}}</p></div>
+        {{#each post.commenters as |commenter| }}
+        <div class="comment"><h3>{{commenter.username}}</h3><p>{{commenter.comment.content}}</p></div>
         {{/each}}
         {{#if logged_in}}
         <div id="submit-comment"></div><textarea id="comment-content"></textarea><button id="comment-button" data-id="{{post.id}}">submit comment</button></div>
