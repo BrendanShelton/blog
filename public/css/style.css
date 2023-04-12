@@ -80,10 +80,20 @@ section p {
     color: white;
     margin-top: 1px;
 }
+
+section div h3 {
+    text-decoration: none;
+    color: black;
+    padding: .5%;
+    border-bottom: 1px;
+    margin-bottom: 2px;
+}
+
 section div p {
     text-decoration: none;
     color: black;
     padding: .5%;
+    margin-left: 3px;
 }
 
 #submit-comment {
