@@ -10,7 +10,7 @@ This application requires node.js and MySQL Server. Clone this repository by ope
 
 ## Usage
 
-To run this on a local host, open a MySQL shell in the "db" folder and enter "source schema.sql" in order to create the "bloge_db" database. This will also drop any existing database with that name. Create a .env file and add your MySQL username and password and the name of the database, as shown below in the second screenshot. Open the main folder containing "server.js" in a terminal and enter "npm run seed" to seed the database then enter "npm start". Go to http://localhost:3001/ on a web browser. On the home page, click on a post to see the comments. Sign up or login to create a comment. Click on "Dashboard" to view your previous posts and create new ones.
+To run this on a local host, open a MySQL shell in the "db" folder and enter "source schema.sql" in order to create the "blog_db" database. This will also drop any existing database with that name. Create a .env file and add your MySQL username and password and the name of the database, as shown below in the second screenshot. Open the main folder containing "server.js" in a terminal and enter "npm run seed" to seed the database then enter "npm start". Go to http://localhost:3001/ on a web browser. On the home page, click on a post to see the comments. Sign up or login to create a comment. Click on "Dashboard" to view your previous posts and create new ones.
 
 
 https://github.com/BrendanShelton/blog
