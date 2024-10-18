@@ -2,7 +2,7 @@
 
 ## Description
 
-This application allows a user to view posts by other users and comment on them and create his own when logged in
+This application allows a user to view posts by other users and comment on them and create his own when logged in.
 
 ## Installation
 
